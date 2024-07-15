@@ -26,7 +26,7 @@ class AdminController extends Controller
             ];
             $customMessage = [
             'email.required'=>'Email is Required',
-            'email.emailk'=>'Valid Email is Required',
+            'email.email'=>'Valid Email is Required',
             'password.required' =>'Password is Required'
             ];
 
@@ -85,6 +85,27 @@ class AdminController extends Controller
         }else{
             return "false";
         }
+    }
+    public function updateAdminDetails(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+            $rules= [
+            'name'=>'required|alpha',
+            'mobile'=>'required|numeric'
+            ];
+            $customMessage = [
+            'name.required'=>'Name is Required',
+            'name.alpha'=>'Valid Name is Required',
+            'mobile.required'=>'Mobile is Required',
+            'mobile.numeric' =>'Valid Mobile Number is Required'
+            ];
+            $request->validate($rules,$customMessage);
+
+            Admin::where('email',Auth::guard('admin')->user()->email)->update(['name'=>$data['name'],'mobile'=>$data['mobile']]);
+            return redirect()->back()->with('success_message',"details Has Been updated successfully!");
+        }
+        return view('admin.update_admin_details');
     }
 
 

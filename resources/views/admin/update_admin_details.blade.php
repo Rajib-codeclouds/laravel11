@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Update Password</li>
+              <li class="breadcrumb-item active">Update Details</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,7 +25,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Update Password</h3>
+                <h3 class="card-title">Update Details</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -41,26 +41,35 @@
 
                 </div>
             @endif
-              <form method="post" action="{{url('admin/update-password')}}">@csrf
+
+               @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+              <form method="post" action="{{url('admin/update-admin-details')}}">@csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input  name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{ Auth::guard('admin')->user()->email}}" readonly>
+                    <input  name="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email" value="{{ Auth::guard('admin')->user()->email}}" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="current_pwd">Current Password</label>
-                    <input name="current_pwd" type="password" class="form-control" id="current_pwd" placeholder="Current Password">
-                    <spna id="verifyCurrentPassword"></span>
+                    <label for="name">Name</label>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Name" value="{{ Auth::guard('admin')->user()->name}}">
                   </div>
 
                   <div class="form-group">
-                    <label  for="new_pwd">New Password</label>
-                    <input name="new_pwd" type="password" class="form-control" id="new_pwd" placeholder="New Password">
+                    <label  for="mobile">Mobile</label>
+                    <input name="mobile" type="text" class="form-control" id="mobile" placeholder="mobile" value="{{ Auth::guard('admin')->user()->mobile}}">
                   </div>
 
                 <div class="form-group">
-                    <label for="confirm_pwd">Confirm Password</label>
-                    <input name="confirm_pwd" type="password" class="form-control" id="confirm_pwd" placeholder="Confirm Password">
+                    <label for="image">Image</label>
+                    <input name="image" type="file" class="form-control" id="image" placeholder="image">
                 </div>
                 </div>
                 <!-- /.card-body -->
