@@ -31,6 +31,15 @@ class AdminController extends Controller
 
             $request->validate($rules,$customMessage);
 
+            // cookies set successfully
+            if(!empty($_POST['remember'])){
+                setcookie("email",$_POST['email'],time()+3600);
+                setcookie("password",$_POST['password'],time()+3600);
+            }else{
+                setcookie("email","");
+                setcookie("password","");
+            }
+
 
 
             //echo "<pre>"; print_r($data); die;

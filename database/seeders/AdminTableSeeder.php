@@ -16,7 +16,7 @@ class AdminTableSeeder extends Seeder
     {
         $password = Hash::make('12345678');
         $adminRecords = [
-            ['name'=>'admin','type'=>'admin','mobile'=>'9874915672','email'=>'admin@gmail.com','password'=>$password,'image'=>'','status'=>1],
+            ['name'=>'admin','type'=>'admin','mobile'=>'9874915672','email'=>'rajib@gmail.com','password'=>$password,'image'=>'','status'=>1],
         ];
         Admin::insert($adminRecords);
     }
