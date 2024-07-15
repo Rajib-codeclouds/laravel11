@@ -13,6 +13,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
     // admin middleware route
     Route::group(['middleware'=>['admin']],function(){
         Route::match(['get','post'],'dashboard',[AdminController::class,'dashboard']);
+        Route::get('/logout',[AdminController::class,'logout']);
     });
 });
 
