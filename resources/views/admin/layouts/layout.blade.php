@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('admin/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{url('admin/plugins/select2/css/select2.min.css')}}">
 </head>
 <!--
 `body` tag options:
@@ -64,6 +65,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin/js/pages/dashboard3.js')}}"></script>
 <script src="{{asset('admin/js/custom.js')}}"></script>
+<script src="{{url('admin/plugins/select2/js/select2.min.js')}}"></script>
 
 <script src="{{ url('admin/plugins/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{ url('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
@@ -73,5 +75,6 @@
         $("#cmspages").DataTable();
     })
 </script>
+
 </body>
 </html>
