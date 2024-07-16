@@ -15,8 +15,8 @@ class CmsController extends Controller
     public function index()
     {
         Session::put('page','cms-pages');
-       $cms_pages = CmsPage::get();
-return view('Admin.pages.cms_pages')->with(compact('cms_pages'));
+        $cms_pages = CmsPage::get();
+        return view('Admin.pages.cms_pages')->with(compact('cms_pages'));
     }
 
     /**
@@ -56,7 +56,17 @@ return view('Admin.pages.cms_pages')->with(compact('cms_pages'));
      */
     public function update(Request $request, CmsPage $cmsPage)
     {
-        //
+        if($request->ajax()){
+            $data = $request->all();
+           // echo "<pre>"; print_r($data); die;
+            if($data['status']=="Active"){
+                $status = 0;
+            }else{
+                 $status = 1;
+            }
+            CmsPage::where('_id',$data['page_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'page_id'=>$data['page_id']]);
+        }
     }
 
     /**

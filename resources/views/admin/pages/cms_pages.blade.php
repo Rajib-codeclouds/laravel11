@@ -47,16 +47,15 @@
                         <td>{{$page->url}}</td>
                         <td>{{$page->created_at}}</td>
                         <td>
-                        <a title="Edit Cms Page" href="{{url('admin/add-edit-page/'.$page->id)}}"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;
-                        <a title="Delete CMS Page" href="javascript:void(0)" class="confirmDelete" record="page" recordid="{{$page->id}}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;
+                        <a title="Edit Cms Page" href="{{url('admin/add-edit-cms-page/'.$page->_id)}}"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;
+                        <a title="Delete CMS Page" href="javascript:void(0)" class="confirmDelete" record="page" recordid="{{$page->_id}}"><i class="fas fa-trash"></i></a>&nbsp;&nbsp;
 
                         @if($page->status == 1)
-                        <a class="updateCmsPageStatus" id="page-{{$page->id}}" page_id={{$page->id}} href="javascript:void(0)" ><i class="fas fa-toggle-on" aria-hidden="true" status="Active"></i></a>&nbsp;&nbsp;
+                        <a class="updateCmsPageStatus" id="page-{{$page->_id}}" page_id={{$page->_id}} href="javascript:void(0)" ><i class="fas fa-toggle-on" aria-hidden="true" status="Active"></i></a>&nbsp;&nbsp;
                         @else
-                        <a class="updateCmsPageStatus" id="page-{{$page->id}}" page_id={{$page->id}} href="javascript:void(0)" ><i class="fas fa-toggle-off" aria-hidden="true" status="Inactive"></i></a>&nbsp;&nbsp;
+                        <a class="updateCmsPageStatus" id="page-{{$page->_id}}" page_id={{$page->_id}} href="javascript:void(0)" ><i class="fas fa-toggle-off" aria-hidden="true" status="Inactive"></i></a>&nbsp;&nbsp;
                         @endif
                         </td>
-
                     </tr>
                     @endforeach
                   </tbody>
