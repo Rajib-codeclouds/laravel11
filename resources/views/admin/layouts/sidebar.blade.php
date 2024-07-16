@@ -77,7 +77,7 @@
                   <p>Update Details</p>
                 </a>
               </li>
-                @if(Session::get('page')=="update-password")
+                @if(Session::get('page')=="subadmins")
                     <?php $active = "active" ?>
                 @else
                     <?php $active = "" ?>
@@ -90,6 +90,30 @@
               </li>
             </ul>
           </li>
+               @if(Session::get('page')=="cms-pages")
+                    <?php $active = "active" ?>
+                @else
+                    <?php $active = "" ?>
+                @endif
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link {{$active}}"><i class="nav-icon fas fa-file"></i>
+                <p>Pages Management</p>
+                <i class="right fas fa-angle-left"></i>
+                </a>
+                <ul class="nav nav-treeview">
+                @if(Session::get('page')=="cms-pages")
+                @php $active = "active" @endphp
+                @else
+                @php $active = "" @endphp
+                @endif
+                <li class="nav-item">
+                <a href="{{url('admin/cms-pages')}}" class="nav-link {{ $active }}">
+                       <i class="nav-icon fas fa-copy"></i>
+                <p>CMS Pages</p>
+                </a>
+                </li>
+                </ul>
+            </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
