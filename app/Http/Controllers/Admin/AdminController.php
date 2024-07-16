@@ -9,11 +9,13 @@ use App\Models\Admin;
 use Auth;
 use Hash;
 use Image;
+use Session;
 
 
 class AdminController extends Controller
 {
     public function dashboard(){
+     Session::put('page','dashboard');
         return view('admin.dashboard');
     }
 
@@ -60,6 +62,7 @@ class AdminController extends Controller
     }
 
     public function updatePassword(Request $request){
+        Session::put('page','update-password');
         if($request->isMethod('post')){
         $data = $request->input();
         //echo "<pre>"; print_r($data); die;
@@ -88,6 +91,7 @@ class AdminController extends Controller
         }
     }
     public function updateAdminDetails(Request $request){
+        Session::put('page','update-admin-details');
         if($request->isMethod('post')){
             $data = $request->all();
             //echo "<pre>"; print_r($data); die;

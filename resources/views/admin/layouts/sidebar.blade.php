@@ -27,17 +27,26 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+            @if(Session::get('page')=="dashboard")
+                <?php $active = "active"; ?>
+            @else
+                <?php $active = ""; ?>
+            @endif
            <li class="nav-item">
-            <a href="{{ url('admin/dashboard') }}" class="nav-link">
+            <a href="{{ url('admin/dashboard') }}" class="nav-link {{$active}}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
+             @if(Session::get('page')=="update-password" || Session::get('page')=="update-admin-details" || Session::get('page')=="subadmins" )
+                <?php $active = "active"; ?>
+            @else
+                <?php $active = ""; ?>
+            @endif
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link {{$active}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Admin Management
@@ -45,20 +54,36 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+            @if(Session::get('page')=="update-password")
+                <?php $active = "active" ?>
+             @else
+                <?php $active = "" ?>
+            @endif
+
               <li class="nav-item">
-                <a href="{{url('admin/update-password')}}" class="nav-link">
+                <a href="{{url('admin/update-password')}}" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Update Password</p>
                 </a>
               </li>
+                 @if(Session::get('page')=="update-admin-details")
+                <?php $active = "active" ?>
+                @else
+                    <?php $active = "" ?>
+                @endif
               <li class="nav-item">
-                <a href="{{url('admin/update-admin-details')}}" class="nav-link">
+                <a href="{{url('admin/update-admin-details')}}" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Update Details</p>
                 </a>
               </li>
+                @if(Session::get('page')=="update-password")
+                    <?php $active = "active" ?>
+                @else
+                    <?php $active = "" ?>
+                @endif
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link active">
+                <a href="./index3.html" class="nav-link {{$active}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SubAdmins</p>
                 </a>
